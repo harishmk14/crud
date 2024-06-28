@@ -16,7 +16,7 @@ const App = () => {
   }, [dispatch]);
 
   const [formData, setFormData] = useState({
-    id: null,
+ 
     name: '',
     email: '',
     phone: '',
@@ -45,13 +45,13 @@ const App = () => {
       dispatch(updateUser(formData));
     } else {
       const newUser = {
-        id: users.length + 1,
-        ...formData,
+       
+        ...formData,id: users.length + 1,
       };
+     
       dispatch(addUser(newUser));
     }
-    setFormData({ id: null, name: '', email: '', phone: '' });
-    navigate('/data-table');
+    setFormData({ name: '', email: '', phone: '' });
   };
 
   return (
