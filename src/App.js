@@ -8,6 +8,7 @@ import './index.css';
 const App = () => {
   const dispatch = useDispatch();
   const users = useSelector(state => state.users.users);
+  const error = useSelector(state => state.users.error);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,7 +17,7 @@ const App = () => {
   }, [dispatch]);
 
   const [formData, setFormData] = useState({
- 
+    id: null,
     name: '',
     email: '',
     phone: '',
@@ -45,18 +46,18 @@ const App = () => {
       dispatch(updateUser(formData));
     } else {
       const newUser = {
-       
-        ...formData,id: users.length + 1,
+        ...formData,
+        id: users.length + 1,
       };
-     
       dispatch(addUser(newUser));
     }
-    setFormData({ name: '', email: '', phone: '' });
+    setFormData({ id: null, name: '', email: '', phone: '' });
   };
 
   return (
     <div>
       <h1>CRUD Operations</h1>
+      {error && <p className="error">{error}</p>}
       <button className="navigate-button" onClick={() => navigate('/data-table')}>View Table</button>
       <div className="container">
         <div className="box">

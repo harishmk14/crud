@@ -20,9 +20,8 @@ const DataTable = () => {
 
   const handleBack = () => {
     navigate('/');
-    window.location.reload(); 
+    window.location.reload();
   };
-
 
   return (
     <div>
@@ -42,7 +41,7 @@ const DataTable = () => {
           {users.length > 0 ? (
             users.map(user => (
               <tr key={user.id}>
-                <td>{user.id  }</td>
+                <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.phone}</td>
